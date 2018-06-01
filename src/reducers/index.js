@@ -1,11 +1,9 @@
-/* eslint-disable no-multi-spaces */
-
 import { combineReducers } from 'redux';
 
-import testReducer        from './testReducer';
+import tournamentReducer from './tournamentReducer';
 
 const rootReducer = combineReducers({
-  testReducer
+  tournamentReducer
 });
 
 export default rootReducer;

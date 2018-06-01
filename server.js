@@ -1,4 +1,3 @@
-/* eslint-disable */
 var express = require('express');
 var webpack = require('webpack');
 
@@ -17,6 +16,12 @@ app.use(require('webpack-dev-middleware')(compiler, {
 app.use(require('webpack-hot-middleware')(compiler));
 
 app.use((req, res) => {
+  if (req.url === '/stats-data/germany-13-14.json') {
+    res.status(200).sendFile(__dirname + '/stats-data/germany-13-14.json');
+
+    return;
+  }
+
   res.status(200).sendFile(__dirname + '/index.html')
 });
 

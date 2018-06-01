@@ -25,7 +25,7 @@ if (!isProd) {
 
 const history = createHistory();
 const store = configureStore(history);
-const mountNode = document.getElementById('app');
+const mountNode = document.getElementById('root');
 
 const renderApp = () => {
   const App = require('./containers/App/App').default; //eslint-disable-line no-undef

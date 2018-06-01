@@ -1,2 +1,1 @@
-/* eslint-disable no-multi-spaces */
-export * as TestActions     from './TestActions';
+export * as tournamentActions from './TournamentActions';

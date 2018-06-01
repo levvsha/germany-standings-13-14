@@ -1,3 +1,1 @@
-/* eslint-disable no-multi-spaces */
-
-export DummyComponent                 from './DummyComponent';
+export TableRow from './TableRow/TableRow';
