@@ -3,6 +3,7 @@ import 'rc-slider/assets/index.css';
 
 import React, { Component } from 'react';
 import Type from 'prop-types';
+import _ from 'lodash';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { tournamentActions } from '../../actions';
@@ -46,59 +47,78 @@ export default class TournamentTableApp extends Component {
         <TableRow
           key={ index }
           rowStats={ teamStats }
-          rowActions={this.props.rowActions}/>
+          rowClickAction={this.props.tournamentActions.teamNameClick}/>
       );
     });
 
+    let marks = { 1: 1 };
+    let markCounter = 0;
+
+    while (markCounter <= roundsLength) {
+      markCounter = markCounter + 5;
+      let mark = _.clamp(markCounter, 1, roundsLength);
+
+      marks[mark] = mark;
+    }
+
     return (
-      <div className="row">
-        <div className="slider-container col-xs-11 col-xs-push-1">
-          <Slider
-            dots
-            min={1}
-            step={1}
-            onChange={this.props.rowActions.recalculateStandings}
-            defaultValue={roundsLength}
-            max={roundsLength}
-          />
-        </div>
+      <div className="c-tournament-app">
+        { !teamsStats.length &&
         <div className="col-xs-11 col-xs-push-1">
-          <table className="tournament-table table">
-            <thead>
-              <tr>
-                <th>
-                </th>
-                <th className="team-name">
-                  Team
-                </th>
-                <th>
-                  P
-                </th>
-                <th>
-                  W
-                </th>
-                <th>
-                  D
-                </th>
-                <th>
-                  L
-                </th>
-                <th className="goal-stats">
-                  Gs
-                </th>
-                <th>
-                  Gd
-                </th>
-                <th>
-                  Pt
-                </th>
-              </tr>
-            </thead>
-            <tbody className="tournament-table-body">
-              { tableRows }
-            </tbody>
-          </table>
+          DATA LOADED...
         </div>
+        }
+        { teamsStats.length &&
+        <div>
+          <div className="slider-container col-xs-11 col-xs-push-1">
+            <Slider
+              dots
+              min={1}
+              step={1}
+              marks={marks}
+              onChange={this.props.tournamentActions.recalculateStandings}
+              defaultValue={roundsLength}
+              max={roundsLength} />
+          </div>
+          <div className="col-xs-11 col-xs-push-1">
+            <table className="tournament-table table">
+              <thead>
+                <tr>
+                  <th>
+                  </th>
+                  <th className="team-name">
+                    Team
+                  </th>
+                  <th>
+                    P
+                  </th>
+                  <th>
+                    W
+                  </th>
+                  <th>
+                    D
+                  </th>
+                  <th>
+                    L
+                  </th>
+                  <th className="goal-stats">
+                    Gs
+                  </th>
+                  <th>
+                    Gd
+                  </th>
+                  <th>
+                    Pt
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="tournament-table-body">
+                { tableRows }
+              </tbody>
+            </table>
+          </div>
+        </div>
+        }
       </div>
     );
   }

@@ -13,3 +13,20 @@ export function recalculateStandings(round) {
     round
   }
 }
+
+export function processingTournamentData(stats) {
+  return {
+    type: types.PROCESSING_TOURNAMENT_DATA,
+    stats
+  }
+}
+
+export function loadTournamentData() {
+  return function (dispatch) {
+    return fetch(`${ document.location.href }stats-data/germany-13-14.json`)
+      .then(request => request.json())
+      .then(stats	=>	{
+        dispatch(processingTournamentData(stats));
+      });
+  }
+}
