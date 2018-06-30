@@ -23,7 +23,7 @@ export function processingTournamentData(stats) {
 
 export function loadTournamentData() {
   return function (dispatch) {
-    return fetch(`${ document.location.href }stats-data/germany-13-14.json`)
+    return fetch('https://raw.githubusercontent.com/levvsha/germany-standings-13-14/master/stats-data/germany-13-14.json')
       .then(request => request.json())
       .then(stats	=>	{
         dispatch(processingTournamentData(stats));

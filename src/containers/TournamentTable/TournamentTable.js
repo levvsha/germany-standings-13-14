@@ -68,7 +68,7 @@ export default class TournamentTableApp extends Component {
           DATA LOADED...
         </div>
         }
-        { teamsStats.length &&
+        { !!teamsStats.length &&
         <div>
           <div className="slider-container col-xs-11 col-xs-push-1">
             <Slider
@@ -78,7 +78,8 @@ export default class TournamentTableApp extends Component {
               marks={marks}
               onChange={this.props.tournamentActions.recalculateStandings}
               defaultValue={roundsLength}
-              max={roundsLength} />
+              max={roundsLength}
+            />
           </div>
           <div className="col-xs-11 col-xs-push-1">
             <table className="tournament-table table">
