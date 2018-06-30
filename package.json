@@ -13,7 +13,7 @@
   },
   "betterScripts": {
     "build-prod": {
-      "command": "rm -rf build && webpack --verbose --progress -p --config ./webpack/webpack.prod.config.js",
+      "command": "rm -rf docs && webpack --verbose --progress -p --config ./webpack/webpack.prod.config.js",
       "env": {
         "NODE_ENV": "production"
       }

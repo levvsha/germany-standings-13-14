@@ -5,7 +5,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 // var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-var outPath = path.resolve(__dirname, '../build');
+var outPath = path.resolve(__dirname, '../docs');
 
 module.exports = {
   mode: 'production',
@@ -116,7 +116,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      filename: '../build/index.html',
+      filename: '../docs/index.html',
       template: './webpack/index.tpl.ejs',
     }),
     new CopyWebpackPlugin([
